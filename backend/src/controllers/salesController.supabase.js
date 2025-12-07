@@ -48,13 +48,19 @@ const getSales = async (req, res) => {
         // 1. Search (across multiple fields using OR)
         if (search) {
             const searchTerms = search.split(',').map(term => term.trim()).filter(term => term.length > 0);
-            
-            // Build OR conditions for search
-            const orConditions = searchTerms.map(term => 
-                `"Customer Name".ilike.%${term}%,"Phone Number".ilike.%${term}%,"Product Name".ilike.%${term}%,"Product Category".ilike.%${term}%`
-            ).join(',');
-            
-            query = query.or(orConditions);
+
+            // For each search term, we need ALL terms to match (AND logic)
+            // Each term searches across multiple fields (OR within term)
+            searchTerms.forEach(term => {
+                const orConditions = [
+                    `"Customer Name".ilike.%${term}%`,
+                    `"Phone Number".ilike.%${term}%`,
+                    `"Product Name".ilike.%${term}%`,
+                    `"Product Category".ilike.%${term}%`
+                ].join(',');
+
+                query = query.or(orConditions);
+            });
         }
 
         // 2. Region filter
@@ -114,7 +120,7 @@ const getSales = async (req, res) => {
         const limitNum = parseInt(limit) || 10;
         const pageNum = parseInt(page) || 1;
         const offset = (pageNum - 1) * limitNum;
-        
+
         query = query.range(offset, offset + limitNum - 1);
 
         // Execute query
@@ -122,9 +128,9 @@ const getSales = async (req, res) => {
 
         if (error) {
             console.error('Supabase query error:', error);
-            return res.status(500).json({ 
+            return res.status(500).json({
                 message: 'Database query failed',
-                error: error.message 
+                error: error.message
             });
         }
 
@@ -175,7 +181,7 @@ const getSales = async (req, res) => {
 
     } catch (error) {
         console.error('Error fetching sales data:', error);
-        res.status(500).json({ 
+        res.status(500).json({
             message: 'Internal Server Error',
             error: process.env.NODE_ENV === 'development' ? error.message : undefined
         });
