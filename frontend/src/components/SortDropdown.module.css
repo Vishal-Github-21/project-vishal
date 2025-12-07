@@ -1,0 +1,69 @@
+.dropdown {
+    position: relative;
+    margin-left: auto;
+    /* Push to right */
+}
+
+.trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--card-bg);
+    /* #ffffff to stand out or filter color */
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.trigger:hover {
+    background-color: var(--background-bg);
+    /* #F3F3F3 */
+}
+
+.label {
+    color: var(--text-secondary);
+}
+
+.value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.icon {
+    color: var(--text-secondary);
+}
+
+.menu {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    min-width: 180px;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: var(--shadow-md);
+    padding: 0.5rem;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: var(--background-bg);
+}
+
+.item.selected {
+    color: var(--primary-color);
+    font-weight: 500;
+}

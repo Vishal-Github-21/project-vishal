@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    justify-content: center;
+    /* Centered */
+    align-items: center;
+    padding: 1rem 0;
+    margin-top: 1rem;
+    gap: 2rem;
+    position: relative;
+}
+
+.controls {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    /* Changed from fixed width for flexibility */
+    height: 36px;
+    /* Increased height */
+    padding: 0 0.5rem;
+    /* Added padding for larger numbers */
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+    font-size: 0.95rem;
+    /* Slightly larger */
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #e5e5e5;
+    color: var(--text-primary);
+    border-color: #d1d5db;
+}
+
+.button.active {
+    background-color: #000;
+    color: white;
+    border-color: #000;
+}
+
+.dots {
+    color: var(--text-secondary);
+    padding: 0 0.25rem;
+}
+
+.jumpForm {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: absolute;
+    right: 0;
+}
+
+.jumpLabel {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.jumpInput {
+    width: 120px;
+    /* Increased from 70px */
+    padding: 0.4rem 0.5rem;
+    /* Increased padding */
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    /* Slightly larger font */
+    text-align: center;
+    font-weight: 500;
+    color: var(--text-primary);
+    background-color: var(--card-bg);
+}
+
+.jumpInput:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}

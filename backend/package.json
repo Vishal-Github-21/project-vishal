@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db:migrate": "node src/db/migrate.js",
+    "db:schema": "psql -U postgres -d truestate_db -f src/db/schema.sql",
+    "db:setup": "psql -U postgres -c 'CREATE DATABASE truestate_db;' && npm run db:migrate",
+    "db:reset": "psql -U postgres -c 'DROP DATABASE IF EXISTS truestate_db;' && npm run db:setup"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.78.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^3.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11",
+    "pg": "^8.16.3"
+  }
+}

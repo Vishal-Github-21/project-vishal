@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    max-width: 400px;
+    transition: box-shadow var(--transition-fast);
+}
+
+.container:focus-within {
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    border-color: var(--primary-color);
+}
+
+.icon {
+    color: var(--text-secondary);
+    margin-right: 0.75rem;
+}
+
+.input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.input::placeholder {
+    color: var(--text-secondary);
+}

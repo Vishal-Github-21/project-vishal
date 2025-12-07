@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.25rem;
+    flex: 1;
+    min-width: 200px;
+    box-shadow: var(--shadow-sm);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.label {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.icon {
+    color: #94a3b8;
+    cursor: help;
+}
+
+.value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.subValue {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
