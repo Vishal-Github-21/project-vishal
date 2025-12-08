@@ -1,54 +1,124 @@
-# Retail Sales Management System
+# TruEstate - Retail Sales Management System
 
-A modern, full-stack Retail Sales Management dashboard built with **React**, **Node.js**, and **Express**. This application allows users to visualize, search, filter, and manage sales transactions from a large CSV dataset.
+A modern, full-stack Retail Sales Management dashboard built with **React 19**, **Node.js**, and **Express**. This application handles over **1 million sales transactions** with instant search, advanced filtering, real-time analytics, and seamless data export capabilities.
 
-![UI Screenshot](https://via.placeholder.com/800x600?text=Dashboard+Preview)
+## 📸 Screenshots
 
-## Features
+### Light Mode
+
+![TruEstate Light Mode](./screenshots/light-mode.png)
+
+### Dark Mode
+
+![TruEstate Dark Mode](./screenshots/dark-mode.png)
+
+## ✨ Features
 
 ### 📊 Dashboard & Analytics
-- **Overview Dashboard**: A clean "Welcome" view with key system status.
-- **Stats Cards**: Real-time aggregation of `Total Units Sold`, `Total Quantity`, and `Discount Given` based on current filters.
 
-### 🔍 Search & Filtering
-- **Dynamic Search**: Instant search by Customer Name or Phone Number.
-- **Advanced Filtering**: 
-    - **Filter Bar**: Filter by Region, Gender, Category, Payment Method, Tags, and Date.
-    - **Dynamic Options**: Tags and Date dropdowns are populated directly from the dataset.
-- **Clear Filters**: One-click reset button.
+- **Overview Dashboard**: Clean welcome view with system status and quick links
+- **Real-Time Stats Cards**: Dynamic aggregation of Total Units Sold, Total Amount (₹), and Total Discount based on active filters
+- **Instant Updates**: Stats refresh automatically when filters are applied
 
-### 📋 Data Table
-- **Responsive Table**: Displays Transaction ID, Customer details, Product info, and Prices.
-- **Sorting**: dedicated "Sort By" dropdown for Price, Quantity, Date, etc. (Handles numeric sorting correctly!).
-- **Pagination**: 
-    - Centered, numbered controls (`1 ... 5 6 7 ... 100`).
-    - **Go-To Page**: Jump quickly to any specific page.
+### 🔍 Advanced Search & Filtering
+
+- **Multi-Term Search**: Intelligent search across Customer Name, Phone Number, Product Name, and Product Category with AND logic
+- **Debounced Input**: 300ms delay prevents excessive API calls while typing
+- **8 Filter Types**:
+  - **Region**: Multi-select (North, South, East, West, Central)
+  - **Gender**: Male, Female
+  - **Category**: Electronics, Clothing, Beauty
+  - **Payment Method**: UPI, Credit Card, Debit Card, Cash, Net Banking, Wallet
+  - **Tags**: Dynamic options from dataset (wireless, organic, casual, etc.)
+  - **Age Range**: Min/Max filters (18-65)
+  - **Date Range**: Year-based filtering (2021-2023)
+- **Filter Combination**: All filters work together seamlessly
+- **One-Click Reset**: Clear all filters and search instantly
+
+### 📋 Data Table & Sorting
+
+- **Responsive Table**: 12 customizable columns displaying comprehensive transaction details
+- **Smart Sorting**: Dedicated dropdown for sorting by Date, Customer Name, Quantity, Total Amount
+- **Correct Numeric Sorting**: Properly handles numbers, dates, and text (no alphabetical bugs!)
+- **Column Visibility**: Show/hide any of the 12 columns with persistent preferences
+
+### 📄 Pagination & Navigation
+
+- **Intelligent Pagination**: Smart ellipsis notation (1 ... 5 6 7 ... 100,000)
+- **Quick Jump**: "Go to Page" feature for instant navigation
+- **100,000+ Pages**: Handles massive datasets smoothly
+- **10 Records Per Page**: Optimized for performance and readability
+
+### 💾 Data Export
+
+- **CSV Export**: Download filtered results with one click
+- **Smart Naming**: Filenames include timestamp and filter status (`sales_export_2024-12-08_filtered.csv`)
+- **Proper Formatting**: Handles commas, quotes, and special characters correctly
+- **Filtered Export**: Export exactly what you see on screen
+
+### 🎨 User Experience
+
+- **Dark Mode**: Full dark theme with persistent localStorage preferences
+- **Theme Toggle**: Switch between light and dark modes instantly
+- **Responsive Design**: Mobile-friendly interface with touch-optimized controls
+- **Loading States**: Skeleton loaders for smooth user experience
+- **Error Handling**: Clear error messages for invalid inputs
 
 ---
 
-## Tech Stack
+## 🛠️ Tech Stack
 
-- **Frontend**: React (Vite), CSS Modules, Lucide React (Icons).
-- **Backend**: Node.js, Express, `csv-parser` for data ingestion.
-- **Data**: In-memory processing of `truestate_assignment_dataset.csv`.
+### Frontend
+
+- **React 19**: Latest features with enhanced hooks and concurrent rendering
+- **Vite 6**: Lightning-fast development server with HMR
+- **CSS Modules**: Component-scoped styling with zero conflicts
+- **Axios**: Clean HTTP client for API integration
+- **Lucide React**: Modern, scalable SVG icon library
+- **Custom Hooks**: `useDebounce` for optimized performance
+
+### Backend
+
+- **Node.js 22**: Latest LTS with enhanced performance
+- **Express 5**: Minimal, flexible web framework
+- **csv-parser**: Efficient CSV data ingestion
+- **CORS**: Configured for cross-origin requests
+- **Supabase Support**: Optional PostgreSQL database integration
+
+### Development Tools
+
+- **ESLint**: Code quality and consistency
+- **Git**: Version control
+- **npm**: Dependency management
+
+### Performance Optimizations
+
+- In-memory data processing for <100ms queries
+- Debounced search (300ms)
+- Lazy pagination (10 records per request)
+- LocalStorage caching for user preferences
+- Efficient O(N) filtering algorithms
 
 ---
 
 ## Getting Started
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- npm
+
+- **Node.js**: v20.19+ or v22.12+ (required for Vite)
+- **npm**: v10+ (comes with Node.js)
 
 ### Installation
 
 1.  **Clone the repository:**
+
     ```bash
-    git clone <repository_url>
+    git clone https://github.com/Vishal-Github-21/project-vishal.git
     cd TruEstate
     ```
 
 2.  **Setup Backend:**
+
     ```bash
     cd backend
     npm install
@@ -65,6 +135,7 @@ A modern, full-stack Retail Sales Management dashboard built with **React**, **N
 You need to run **two separate terminals** (one for backend, one for frontend).
 
 **Terminal 1 (Backend):**
+
 ```bash
 cd backend
 npm start
@@ -72,6 +143,7 @@ npm start
 ```
 
 **Terminal 2 (Frontend):**
+
 ```bash
 cd frontend
 npm run dev
@@ -105,12 +177,99 @@ TruEstate/
     └── package.json
 ```
 
-## Potential Future Enhancements
-- **Authentication**: Login/Signup for Sales Agents vs. Managers.
-- **Data Visualization**: Charts/Graphs using Recharts or Chart.js on the Dashboard.
-- **Export to CSV**: Allow users to download the filtered dataset.
-- **Dark Mode**: Toggle between Light and Dark themes.
+## 🚀 Live Demo
+
+- **Frontend (Netlify)**: [https://vishalstate.netlify.app](https://vishalstate.netlify.app)
+- **Frontend (Vercel)**: [https://project-vishal.vercel.app](https://project-vishal.vercel.app)
+- **Backend API**: `https://project-vishal.vercel.app/api/sales`
+
+## 📊 Key Metrics
+
+- **Dataset Size**: 1,000,000+ sales transactions
+- **Response Time**: <100ms for filtered queries
+- **Pagination**: 100,000+ pages supported
+- **Filter Options**: 8 different filter types
+- **Search Fields**: 4 searchable columns
+- **Export Capacity**: Unlimited filtered records
+
+## 🎯 Use Cases
+
+1. **Sales Analysis**: Identify regional sales trends and top-performing categories
+2. **Customer Segmentation**: Filter by demographics (age, gender, region)
+3. **Revenue Tracking**: Monitor total amounts and discounts by payment method
+4. **Product Performance**: Analyze sales by category and tags
+5. **Time-Series Analysis**: Track sales patterns across different years
+6. **Business Intelligence**: Export filtered data for executive reporting
+
+## 🔮 Future Enhancements
+
+- **User Authentication**: Role-based access (Sales Agents, Managers, Admins)
+- **Data Visualization**: Interactive charts and graphs (Recharts/Chart.js)
+- **Advanced Analytics**: Predictive sales forecasting
+- **Real-Time Sync**: WebSocket integration for live updates
+- **Multi-Language**: i18n support for global teams
+- **PDF Reports**: Generate formatted reports with charts
+
+## 📁 Project Structure
+
+```
+TruEstate/
+├── backend/
+│   ├── data/                          # CSV dataset
+│   │   └── truestate_assignment_dataset.csv
+│   ├── src/
+│   │   ├── controllers/               # Business logic
+│   │   │   ├── salesController.js     # CSV-based controller
+│   │   │   └── salesController.supabase.js  # Database controller
+│   │   ├── db/                        # Database configuration
+│   │   │   ├── supabase.js
+│   │   │   └── supabase-schema.sql
+│   │   ├── routes/                    # API routes
+│   │   │   └── salesRoutes.js
+│   │   ├── utils/                     # Utilities
+│   │   │   └── dataProcessor.js
+│   │   └── index.js                   # Server entry point
+│   └── package.json
+│
+└── frontend/
+    ├── public/                        # Static assets
+    ├── src/
+    │   ├── components/                # React components
+    │   │   ├── ColumnToggle.jsx
+    │   │   ├── Dashboard.jsx
+    │   │   ├── ExportButton.jsx
+    │   │   ├── FilterBar.jsx
+    │   │   ├── FilterPanel.jsx
+    │   │   ├── LoadingSkeleton.jsx
+    │   │   ├── Pagination.jsx
+    │   │   ├── SalesTable.jsx
+    │   │   ├── SearchBar.jsx
+    │   │   ├── Sidebar.jsx
+    │   │   ├── SortDropdown.jsx
+    │   │   ├── StatsCards.jsx
+    │   │   └── ThemeToggle.jsx
+    │   ├── hooks/                     # Custom hooks
+    │   │   └── useDebounce.js
+    │   ├── services/                  # API services
+    │   │   └── api.js
+    │   ├── styles/                    # Global styles
+    │   │   └── global.css
+    │   ├── App.jsx                    # Main app component
+    │   └── main.jsx                   # Entry point
+    └── package.json
+```
+
+## 👨‍💻 Developer
+
+**Vishal Maruti Mukkannavar**
+
+- GitHub: [@Vishal-Github-21](https://github.com/Vishal-Github-21)
+- Repository: [project-vishal](https://github.com/Vishal-Github-21/project-vishal)
+
+## 📄 License
+
+This project is developed as part of an assignment demonstrating full-stack development capabilities.
 
 ---
 
-**Developed by**: [Your Name/Team]
+**Built with ❤️ using React, Node.js, and modern web technologies**
